@@ -35,6 +35,12 @@ TextureImporter:
   - first:
       213: -6511905046387745307
     second: Main Platform_10
+  - first:
+      213: -8544298817701631434
+    second: Main Platform_11
+  - first:
+      213: -2910433976102585030
+    second: Main Platform_12
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -198,8 +204,8 @@ TextureImporter:
       name: Main Platform_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1020
+        x: 1530
+        y: 1530
         width: 510
         height: 510
       alignment: 0
@@ -219,7 +225,7 @@ TextureImporter:
       name: Main Platform_4
       rect:
         serializedVersion: 2
-        x: 510
+        x: 0
         y: 1020
         width: 510
         height: 510
@@ -240,7 +246,7 @@ TextureImporter:
       name: Main Platform_5
       rect:
         serializedVersion: 2
-        x: 1020
+        x: 510
         y: 1020
         width: 510
         height: 510
@@ -261,8 +267,8 @@ TextureImporter:
       name: Main Platform_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 510
+        x: 1020
+        y: 1020
         width: 510
         height: 510
       alignment: 0
@@ -282,8 +288,8 @@ TextureImporter:
       name: Main Platform_7
       rect:
         serializedVersion: 2
-        x: 510
-        y: 510
+        x: 1530
+        y: 1020
         width: 510
         height: 510
       alignment: 0
@@ -303,7 +309,7 @@ TextureImporter:
       name: Main Platform_8
       rect:
         serializedVersion: 2
-        x: 1020
+        x: 0
         y: 510
         width: 510
         height: 510
@@ -324,8 +330,8 @@ TextureImporter:
       name: Main Platform_9
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 510
+        y: 510
         width: 510
         height: 510
       alignment: 0
@@ -345,8 +351,8 @@ TextureImporter:
       name: Main Platform_10
       rect:
         serializedVersion: 2
-        x: 510
-        y: 0
+        x: 1020
+        y: 510
         width: 510
         height: 510
       alignment: 0
@@ -358,6 +364,48 @@ TextureImporter:
       bones: []
       spriteID: 5ed1cf2acd011a5a0800000000000000
       internalID: -6511905046387745307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Platform_11
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 510
+        width: 510
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63aaa14be7d8c6980800000000000000
+      internalID: -8544298817701631434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Platform_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 510
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3d7d2808bf0c97d0800000000000000
+      internalID: -2910433976102585030
       vertices: []
       indices: 
       edges: []
