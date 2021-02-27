@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     CapsuleCollider2D capsuleCollider;
     Animator animator;
 
+    string[] attackTriggers = new string[] { "attackTrigger1", "attackTrigger2" };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -148,9 +150,18 @@ public class Player : MonoBehaviour
 
     private void Attack()
     {
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1") && Input.GetButtonDown("Fire1"))
+        //&& Input.GetButtonDown("Fire1")
+
+        if 
+        (
+            !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1") && 
+            !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 2") &&
+            Input.GetButtonDown("Fire1")
+        )
         {
-            animator.SetTrigger("attackTrigger");
+            animator.SetTrigger(attackTriggers[Random.Range(0,attackTriggers.Length)]);
         }
     }
+
+    
 }
