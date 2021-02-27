@@ -51,8 +51,9 @@ public class Player : MonoBehaviour
     private void Move()
     {
         Run();
-        HandleJump();
-        HandleFall();
+        Jump();
+        Fall();
+        Attack();
     }
 
     private void Run()
@@ -79,7 +80,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void HandleJump()
+    private void Jump()
     {
         if (Input.GetButtonDown("Jump"))
         {
@@ -131,7 +132,7 @@ public class Player : MonoBehaviour
         return raycastHit.collider != null;
     }
 
-    private void HandleFall()
+    private void Fall()
     {
         animator.SetBool("isFalling", rigidBody.velocity.y < -0.5f);
         animator.SetBool("isAgainstWall", isAgainstWall);
@@ -143,5 +144,13 @@ public class Player : MonoBehaviour
         RaycastHit2D raycastLeft = Physics2D.BoxCast(capsuleCollider.bounds.center, capsuleCollider.bounds.size, 0f, Vector2.left, extraHeightText, platformLayerMask);
         RaycastHit2D raycastRight = Physics2D.BoxCast(capsuleCollider.bounds.center, capsuleCollider.bounds.size, 0f, Vector2.right, extraHeightText, platformLayerMask);
         return (raycastLeft.collider != null && raycastRight.collider != null);
+    }
+
+    private void Attack()
+    {
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1") && Input.GetButtonDown("Fire1"))
+        {
+            animator.SetTrigger("attackTrigger");
+        }
     }
 }
