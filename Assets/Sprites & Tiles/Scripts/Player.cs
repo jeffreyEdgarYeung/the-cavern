@@ -20,12 +20,14 @@ public class Player : MonoBehaviour
 
     Rigidbody2D rigidBody;
     CapsuleCollider2D capsuleCollider;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
+        animator = GetComponent<Animator>();
         jumpForce = Mathf.Sqrt(2 * Physics2D.gravity.magnitude * jumpHeight);
     }
 
@@ -47,6 +49,7 @@ public class Player : MonoBehaviour
     {
         Run();
         HandleJump();
+        HandleFall();
     }
 
     private void Run()
@@ -62,14 +65,14 @@ public class Player : MonoBehaviour
 
         if (running)
         {
-            GetComponent<Animator>().SetBool("isRunning", true);
+            animator.SetBool("isRunning", true);
             Vector3 newScale = transform.localScale;
             newScale.x = Mathf.Sign(rigidBody.velocity.x);
             transform.localScale = newScale;
         }
         else
         {
-            GetComponent<Animator>().SetBool("isRunning", false);
+            animator.SetBool("isRunning", false);
         }
     }
 
@@ -82,6 +85,7 @@ public class Player : MonoBehaviour
             if (isGrounded)
             {
                 isJumping = true;
+                animator.SetTrigger("jumpTrigger");
                 rigidBody.AddForce(Vector2.up * jumpForce * rigidBody.mass, ForceMode2D.Impulse);
             }
         }
@@ -122,6 +126,11 @@ public class Player : MonoBehaviour
 
         Debug.Log(raycastHit.collider);
         return raycastHit.collider != null;
+    }
+
+    private void HandleFall()
+    {
+        animator.SetBool("isFalling", rigidBody.velocity.y < -0.5f);
     }
     
    
