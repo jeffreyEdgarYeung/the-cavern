@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: bea89cc21ceee264aa4584c9ac57746d
+guid: f6b0c96fe83690d4eb624975af326e40
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2198637275510270867
-    second: Character Fall_0
+      213: -4204954529096485282
+    second: Character Wall Slide_0
   - first:
-      213: -8081062929333575605
-    second: Character Fall_1
+      213: 8275121087653584924
+    second: Character Wall Slide_1
   - first:
-      213: 7935800847324727286
-    second: Character Fall_2
+      213: 6712647399664169727
+    second: Character Wall Slide_2
   - first:
-      213: -8949113358328633101
-    second: Character Fall_3
+      213: -6124299829413605462
+    second: Character Wall Slide_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -57,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 250
+  spritePixelsToUnits: 325
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -111,13 +111,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Character Fall_0
+      name: Character Wall Slide_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 288
-        height: 540
+        width: 210
+        height: 546
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +125,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39be8b404f0238e10800000000000000
-      internalID: 2198637275510270867
+      spriteID: e56b884722005a5c0800000000000000
+      internalID: -4204954529096485282
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character Fall_1
+      name: Character Wall Slide_1
       rect:
         serializedVersion: 2
-        x: 288
+        x: 210
         y: 0
-        width: 288
-        height: 540
+        width: 210
+        height: 546
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b40ae71c41c4adf80800000000000000
-      internalID: -8081062929333575605
+      spriteID: c10afe629c227d270800000000000000
+      internalID: 8275121087653584924
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character Fall_2
+      name: Character Wall Slide_2
       rect:
         serializedVersion: 2
-        x: 576
+        x: 420
         y: 0
-        width: 288
-        height: 540
+        width: 210
+        height: 546
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,20 +167,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f7c80133d0a12e60800000000000000
-      internalID: 7935800847324727286
+      spriteID: ff2be6fae3d182d50800000000000000
+      internalID: 6712647399664169727
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character Fall_3
+      name: Character Wall Slide_3
       rect:
         serializedVersion: 2
-        x: 864
+        x: 630
         y: 0
-        width: 288
-        height: 540
+        width: 210
+        height: 546
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,8 +188,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f86e16a0dc5ec380800000000000000
-      internalID: -8949113358328633101
+      spriteID: aaf01d9c0cd120ba0800000000000000
+      internalID: -6124299829413605462
       vertices: []
       indices: 
       edges: []

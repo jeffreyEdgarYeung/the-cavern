@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [Header("Player Status")]
+    [Header("Player Parameters")]
     [SerializeField] [Range(0, 50)] float maxSpeed = 10f;
 
     [Header("Jump Parameters")]
     [SerializeField] float jumpHeight = 1f;
+    [SerializeField] Vector2 counterJumpForce;
+    [SerializeField] private LayerMask platformLayerMask;
+    [SerializeField] float jumpForce;
+
+    [Header("Player State")]
     [SerializeField] bool isGrounded;
     [SerializeField] bool isJumping;
     [SerializeField] bool jumpKeyHeld;
-    [SerializeField] Vector2 counterJumpForce;
-    [SerializeField] private LayerMask platformLayerMask;
-
-    // Player State
-    float jumpForce;
+    [SerializeField] bool isFalling;
+    [SerializeField] bool isAgainstWall;
 
     Rigidbody2D rigidBody;
     CapsuleCollider2D capsuleCollider;
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour
         HandleSpriteDirection();
         isGrounded = IsGrounded();
         isJumping = !isGrounded;
+        isAgainstWall = IsAgainstWall();
     }
 
     void FixedUpdate()
@@ -131,7 +134,14 @@ public class Player : MonoBehaviour
     private void HandleFall()
     {
         animator.SetBool("isFalling", rigidBody.velocity.y < -0.5f);
+        animator.SetBool("isAgainstWall", isAgainstWall);
     }
-    
-   
+
+    private bool IsAgainstWall()
+    {
+        float extraHeightText = 0.1f;
+        RaycastHit2D raycastLeft = Physics2D.BoxCast(capsuleCollider.bounds.center, capsuleCollider.bounds.size, 0f, Vector2.left, extraHeightText, platformLayerMask);
+        RaycastHit2D raycastRight = Physics2D.BoxCast(capsuleCollider.bounds.center, capsuleCollider.bounds.size, 0f, Vector2.right, extraHeightText, platformLayerMask);
+        return (raycastLeft.collider != null && raycastRight.collider != null);
+    }
 }
