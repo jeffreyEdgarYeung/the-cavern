@@ -3136,10 +3136,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1534132796, guid: 5027f6b00c673934b88a7959ff81de80, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2782239811244428892, guid: 5027f6b00c673934b88a7959ff81de80,
         type: 3}
       propertyPath: m_Name
@@ -3158,7 +3154,7 @@ PrefabInstance:
     - target: {fileID: 2782239811244428894, guid: 5027f6b00c673934b88a7959ff81de80,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.46
+      value: -1.45
       objectReference: {fileID: 0}
     - target: {fileID: 2782239811244428894, guid: 5027f6b00c673934b88a7959ff81de80,
         type: 3}

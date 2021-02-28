@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     [SerializeField] bool isFalling;
     [SerializeField] bool isAgainstWall;
 
+    [SerializeField] GameObject sword;
+
     Rigidbody2D rigidBody;
     CapsuleCollider2D capsuleCollider;
     Animator animator;
@@ -33,6 +35,7 @@ public class Player : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         animator = GetComponent<Animator>();
         jumpForce = Mathf.Sqrt(2 * Physics2D.gravity.magnitude * jumpHeight);
+        sword.SetActive(false);
     }
 
     // Update is called once per frame
@@ -151,6 +154,7 @@ public class Player : MonoBehaviour
     {
         if 
         (
+        
             !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1") && 
             !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 2") &&
             Input.GetButtonDown("Fire1")
@@ -160,5 +164,9 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void ToggleSwordActive()
+    {
+        sword.SetActive(!sword.activeSelf);
+    }
     
 }
