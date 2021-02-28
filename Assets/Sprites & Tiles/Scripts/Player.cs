@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     [Header("Player Parameters")]
     [SerializeField] [Range(0, 50)] float maxSpeed = 10f;
+    [SerializeField] float knockbackForce;
 
     [Header("Jump Parameters")]
     [SerializeField] float jumpHeight = 1f;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     [SerializeField] bool isAgainstWall;
 
     [SerializeField] GameObject sword;
+    [SerializeField] GameObject slash;
 
     Rigidbody2D rigidBody;
     CapsuleCollider2D capsuleCollider;
@@ -35,7 +37,6 @@ public class Player : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         animator = GetComponent<Animator>();
         jumpForce = Mathf.Sqrt(2 * Physics2D.gravity.magnitude * jumpHeight);
-        sword.SetActive(false);
     }
 
     // Update is called once per frame
@@ -164,9 +165,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ToggleSwordActive()
+    public void Slash()
     {
-        sword.SetActive(!sword.activeSelf);
+        GameObject s = Instantiate(slash, sword.transform.position, Quaternion.identity);
+        s.transform.parent = sword.transform;
+    }
+
+    public void Knockback()
+    {
+        Debug.Log("knockback");
+        Vector2 direction = (transform.localScale.x == 1) ? Vector2.left : Vector2.right;
+        rigidBody.AddForce(Vector2.left * rigidBody.mass * knockbackForce);
     }
     
 }
