@@ -130,7 +130,6 @@ public class Player : MonoBehaviour
         Debug.DrawRay(capsuleCollider.bounds.center - new Vector3(capsuleCollider.bounds.extents.x, 0), Vector2.down * (capsuleCollider.bounds.extents.y + extraHeightText), rayColor);
         Debug.DrawRay(capsuleCollider.bounds.center - new Vector3(capsuleCollider.bounds.extents.x, capsuleCollider.bounds.extents.y + extraHeightText), Vector2.right * (capsuleCollider.bounds.extents.x * 2f), rayColor);
 
-        Debug.Log(raycastHit.collider);
         return raycastHit.collider != null;
     }
 
@@ -150,8 +149,6 @@ public class Player : MonoBehaviour
 
     private void Attack()
     {
-        //&& Input.GetButtonDown("Fire1")
-
         if 
         (
             !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack 1") && 
