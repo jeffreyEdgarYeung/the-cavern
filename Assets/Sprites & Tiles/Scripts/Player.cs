@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     [Header("Player State")]
     [SerializeField] bool isGrounded;
+    [SerializeField] bool isGroundedLastFrame;
     [SerializeField] bool isJumping;
     [SerializeField] bool jumpKeyHeld;
     [SerializeField] bool isFalling;
@@ -27,7 +28,10 @@ public class Player : MonoBehaviour
 
     [Header("SFX")]
     [SerializeField] AudioClip jumpSFX;
-    [SerializeField] float jumpVolume;
+    [SerializeField] [Range(0,1f)] float jumpVolume;
+    [SerializeField] AudioClip landingSFX;
+    [SerializeField] [Range(0, 1f)] float landingVolume;
+
 
     // Cached refs
     Rigidbody2D rigidBody;
@@ -152,6 +156,7 @@ public class Player : MonoBehaviour
     {
         animator.SetBool("isFalling", rigidBody.velocity.y < -0.5f);
         animator.SetBool("isAgainstWall", isAgainstWall);
+        HandleLandingSFX();
     }
 
     private bool IsAgainstWall()
@@ -193,16 +198,20 @@ public class Player : MonoBehaviour
 
     private void HandleRunSFX()
     {
-        if (Mathf.Abs(rigidBody.velocity.x) > Mathf.Epsilon && isGrounded)
-        {
-            if (!audioSource.isPlaying)
-            {
-                audioSource.Play();
-            }
-        }
-        else
+        if (!(Mathf.Abs(rigidBody.velocity.x) > Mathf.Epsilon && isGrounded))
         {
             audioSource.Stop();
+            return;
+        }
+
+        if (!audioSource.isPlaying){ audioSource.Play(); }
+    }
+
+    private void HandleLandingSFX()
+    {
+        if (animator.GetAnimatorTransitionInfo(0).IsName("Fall -> Idle"))
+        {
+            PlaySFX(landingSFX, landingVolume);
         }
     }
 }

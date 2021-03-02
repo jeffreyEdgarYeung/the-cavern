@@ -3218,6 +3218,14 @@ PrefabInstance:
       value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1534132797, guid: 5027f6b00c673934b88a7959ff81de80, type: 3}
+      propertyPath: landingSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 74078e2d19d8c7541b1f359d31a83be8, type: 3}
+    - target: {fileID: 1534132797, guid: 5027f6b00c673934b88a7959ff81de80, type: 3}
+      propertyPath: landingVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1534132797, guid: 5027f6b00c673934b88a7959ff81de80, type: 3}
       propertyPath: knockbackForce
       value: 1500
       objectReference: {fileID: 0}
