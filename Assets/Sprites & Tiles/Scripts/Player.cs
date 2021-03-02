@@ -54,13 +54,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-        HandleSpriteDirection();
         isGrounded = IsGrounded();
         isJumping = !isGrounded;
         isAgainstWall = IsAgainstWall();
+        Move();
+        HandleSpriteDirection();
 
-        if (!isGrounded) { GetComponent<AudioSource>().Stop(); }
+        isGroundedLastFrame = isGrounded; 
+
     }
 
     void FixedUpdate()
@@ -134,7 +135,14 @@ public class Player : MonoBehaviour
     private bool IsGrounded()
     {
         float extraHeightText = 0.1f;
-        RaycastHit2D raycastHit = Physics2D.BoxCast(capsuleCollider.bounds.center, capsuleCollider.bounds.size, 0f, Vector2.down, extraHeightText, platformLayerMask);
+        RaycastHit2D raycastHit = Physics2D.BoxCast
+        (
+            capsuleCollider.bounds.center - new Vector3(0f, 0.1f, 0),   // Slightly lowered from center - new Vector3(0f, 0.1f, 0)
+            capsuleCollider.bounds.size - new Vector3(0.1f, 0.1f, 0),  // - new Vector3(0.1f, 0.1f, 0)
+            0f, 
+            Vector2.down, 
+            extraHeightText, 
+            platformLayerMask);
 
         Color rayColor;
         if (raycastHit.collider != null)
@@ -145,16 +153,18 @@ public class Player : MonoBehaviour
         {
             rayColor = Color.red;
         }
-        Debug.DrawRay(capsuleCollider.bounds.center + new Vector3(capsuleCollider.bounds.extents.x, 0), Vector2.down * (capsuleCollider.bounds.extents.y + extraHeightText), rayColor);
-        Debug.DrawRay(capsuleCollider.bounds.center - new Vector3(capsuleCollider.bounds.extents.x, 0), Vector2.down * (capsuleCollider.bounds.extents.y + extraHeightText), rayColor);
-        Debug.DrawRay(capsuleCollider.bounds.center - new Vector3(capsuleCollider.bounds.extents.x, capsuleCollider.bounds.extents.y + extraHeightText), Vector2.right * (capsuleCollider.bounds.extents.x * 2f), rayColor);
-
+        
+        Debug.DrawRay(capsuleCollider.bounds.center + new Vector3(capsuleCollider.bounds.extents.x, 0), Vector2.down * (capsuleCollider.bounds.extents.y ), rayColor);
+        Debug.DrawRay(capsuleCollider.bounds.center - new Vector3(capsuleCollider.bounds.extents.x, 0), Vector2.down * (capsuleCollider.bounds.extents.y ), rayColor);
+        Debug.DrawRay(capsuleCollider.bounds.center - new Vector3(capsuleCollider.bounds.extents.x, capsuleCollider.bounds.extents.y), Vector2.right * (capsuleCollider.bounds.extents.x * 2f), rayColor);
+        
         return raycastHit.collider != null;
     }
 
     private void Fall()
     {
-        animator.SetBool("isFalling", rigidBody.velocity.y < -0.5f);
+        isFalling = rigidBody.velocity.y < -0.5f;
+        animator.SetBool("isFalling", isFalling);
         animator.SetBool("isAgainstWall", isAgainstWall);
         HandleLandingSFX();
     }
@@ -198,6 +208,8 @@ public class Player : MonoBehaviour
 
     private void HandleRunSFX()
     {
+        if (!isGrounded) { GetComponent<AudioSource>().Stop(); }
+
         if (!(Mathf.Abs(rigidBody.velocity.x) > Mathf.Epsilon && isGrounded))
         {
             audioSource.Stop();
@@ -209,7 +221,7 @@ public class Player : MonoBehaviour
 
     private void HandleLandingSFX()
     {
-        if (animator.GetAnimatorTransitionInfo(0).IsName("Fall -> Idle"))
+        if (!isGroundedLastFrame && isGrounded)
         {
             PlaySFX(landingSFX, landingVolume);
         }

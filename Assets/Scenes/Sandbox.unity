@@ -3223,7 +3223,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 74078e2d19d8c7541b1f359d31a83be8, type: 3}
     - target: {fileID: 1534132797, guid: 5027f6b00c673934b88a7959ff81de80, type: 3}
       propertyPath: landingVolume
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1534132797, guid: 5027f6b00c673934b88a7959ff81de80, type: 3}
       propertyPath: knockbackForce
@@ -3319,7 +3319,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5cb9dc42455837149886457bf052d842, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
