@@ -21,12 +21,19 @@ public class Player : MonoBehaviour
     [SerializeField] bool isFalling;
     [SerializeField] bool isAgainstWall;
 
+    [Header("Attack Parameters")]
     [SerializeField] GameObject sword;
     [SerializeField] GameObject slash;
 
+    [Header("SFX")]
+    [SerializeField] AudioClip jumpSFX;
+    [SerializeField] float jumpVolume;
+
+    // Cached refs
     Rigidbody2D rigidBody;
     CapsuleCollider2D capsuleCollider;
     Animator animator;
+    AudioSource audioSource;
 
     string[] attackTriggers = new string[] { "attackTrigger1", "attackTrigger2" };
 
@@ -37,6 +44,7 @@ public class Player : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         animator = GetComponent<Animator>();
         jumpForce = Mathf.Sqrt(2 * Physics2D.gravity.magnitude * jumpHeight);
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -47,6 +55,8 @@ public class Player : MonoBehaviour
         isGrounded = IsGrounded();
         isJumping = !isGrounded;
         isAgainstWall = IsAgainstWall();
+
+        if (!isGrounded) { GetComponent<AudioSource>().Stop(); }
     }
 
     void FixedUpdate()
@@ -66,7 +76,7 @@ public class Player : MonoBehaviour
     {
         var deltaX = Input.GetAxis("Horizontal") * maxSpeed;
         rigidBody.velocity = new Vector2(deltaX, rigidBody.velocity.y);
-        
+        HandleRunSFX();
     }
 
     private void HandleSpriteDirection()
@@ -97,6 +107,7 @@ public class Player : MonoBehaviour
                 isJumping = true;
                 animator.SetTrigger("jumpTrigger");
                 rigidBody.AddForce(Vector2.up * jumpForce * rigidBody.mass, ForceMode2D.Impulse);
+                PlaySFX(jumpSFX, jumpVolume);
             }
         }
         else if (Input.GetButtonUp("Jump"))
@@ -175,7 +186,23 @@ public class Player : MonoBehaviour
     {
         Debug.Log("knockback");
         Vector2 direction = (transform.localScale.x == 1) ? Vector2.left : Vector2.right;
-        rigidBody.AddForce(Vector2.left * rigidBody.mass * knockbackForce);
+        rigidBody.AddForce(direction * rigidBody.mass * knockbackForce);
     }
-    
+
+    private void PlaySFX(AudioClip clip, float volume) { AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position, volume); }
+
+    private void HandleRunSFX()
+    {
+        if (Mathf.Abs(rigidBody.velocity.x) > Mathf.Epsilon && isGrounded)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            audioSource.Stop();
+        }
+    }
 }
