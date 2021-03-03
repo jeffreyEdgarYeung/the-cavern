@@ -31,6 +31,10 @@ public class Player : MonoBehaviour
     [SerializeField] [Range(0,1f)] float jumpVolume;
     [SerializeField] AudioClip landingSFX;
     [SerializeField] [Range(0, 1f)] float landingVolume;
+    [SerializeField] AudioClip slash1;
+    [SerializeField] [Range(0, 1f)] float slash1Volume;
+    [SerializeField] AudioClip slash2;
+    [SerializeField] [Range(0, 1f)] float slash2Volume;
 
 
     // Cached refs
@@ -187,7 +191,18 @@ public class Player : MonoBehaviour
             Input.GetButtonDown("Fire1")
         )
         {
-            animator.SetTrigger(attackTriggers[Random.Range(0,attackTriggers.Length)]);
+            string attack = attackTriggers[Random.Range(0, attackTriggers.Length)];
+
+            if( attack == attackTriggers[0]) 
+            { 
+                PlaySFX(slash1, slash1Volume); 
+            }
+            else
+            {
+                PlaySFX(slash2, slash2Volume);
+            }
+
+            animator.SetTrigger(attack);
         }
     }
 

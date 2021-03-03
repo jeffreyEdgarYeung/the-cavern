@@ -3210,6 +3210,14 @@ PrefabInstance:
       objectReference: {fileID: 4659184510432330862, guid: 4d9e33b85965f644eae9a521e164a881,
         type: 3}
     - target: {fileID: 1534132797, guid: 5027f6b00c673934b88a7959ff81de80, type: 3}
+      propertyPath: slash1
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e7f1bfbd59215f44a7e418739f142c3, type: 3}
+    - target: {fileID: 1534132797, guid: 5027f6b00c673934b88a7959ff81de80, type: 3}
+      propertyPath: slash2
+      value: 
+      objectReference: {fileID: 8300000, guid: 41612b272505662468a9e0b4b66c58d1, type: 3}
+    - target: {fileID: 1534132797, guid: 5027f6b00c673934b88a7959ff81de80, type: 3}
       propertyPath: jumpSFX
       value: 
       objectReference: {fileID: 8300000, guid: abcc14949dbaef74996e3b2dde6d3076, type: 3}
@@ -3221,6 +3229,14 @@ PrefabInstance:
       propertyPath: landingSFX
       value: 
       objectReference: {fileID: 8300000, guid: 74078e2d19d8c7541b1f359d31a83be8, type: 3}
+    - target: {fileID: 1534132797, guid: 5027f6b00c673934b88a7959ff81de80, type: 3}
+      propertyPath: slash1Volume
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1534132797, guid: 5027f6b00c673934b88a7959ff81de80, type: 3}
+      propertyPath: slash2Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1534132797, guid: 5027f6b00c673934b88a7959ff81de80, type: 3}
       propertyPath: landingVolume
       value: 0.1
