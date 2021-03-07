@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Slash : MonoBehaviour
 {
+    [SerializeField] private LayerMask platformLayerMask;  // Detect ground hits for sfx
+
     [SerializeField] float duration = .5f;
     Player player;
 
@@ -16,7 +18,8 @@ public class Slash : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Sword Hit");
+        Debug.Log("Sword Hit: ");
+        Debug.Log(collision.transform.position);
         player.Knockback();
     }
 }
