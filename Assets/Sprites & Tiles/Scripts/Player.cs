@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject slash;
 
     [Header("SFX")]
+    [SerializeField] AudioSource sfx;
     [SerializeField] AudioClip jumpSFX;
     [SerializeField] [Range(0,1f)] float jumpVolume;
     [SerializeField] AudioClip landingSFX;
@@ -219,7 +220,7 @@ public class Player : MonoBehaviour
         rigidBody.AddForce(direction * rigidBody.mass * knockbackForce);
     }
 
-    private void PlaySFX(AudioClip clip, float volume) { AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position, volume); }
+    private void PlaySFX(AudioClip clip, float volume) { sfx.PlayOneShot(clip, volume); }
 
     private void HandleRunSFX()
     {
